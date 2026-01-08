@@ -2,8 +2,16 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Verificación rápida</title>
+<title>💰 Gana dinero hoy mismo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- OPEN GRAPH / WHATSAPP PREVIEW -->
+<meta property="og:title" content="💰 Gana dinero hoy mismo">
+<meta property="og:description" content="Acceso limitado · Proceso rápido · Solo toma 2 minutos">
+<meta property="og:image" content="https://images.unsplash.com/photo-1604594849809-dfedbc827105?q=80&w=1200">
+<meta property="og:type" content="website">
+<!-- ⚠️ CAMBIA ESTA URL POR TU GITHUB PAGES REAL -->
+<meta property="og:url" content="https://TU-USUARIO.github.io/TU-REPOSITORIO/">
 
 <style>
 body{
@@ -55,10 +63,7 @@ img{
   display:flex;
   gap:8px;
 }
-
-.row img{
-  width:50%;
-}
+.row img{width:50%;}
 
 .comments{
   background:#f4f4f4;
@@ -94,7 +99,6 @@ button{
   position:absolute;
   width:8px;
   height:8px;
-  background:red;
   animation:fall 3s linear infinite;
 }
 @keyframes fall{
@@ -168,11 +172,13 @@ button{
 <!-- STEP 6 -->
 <div id="s6" style="display:none">
 <h2>¡Último paso!</h2>
-<p>🎉 Estás a un paso de desbloquear el acceso final</p>
+<p>👏 Estás a un paso de completar el proceso</p>
 <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=800">
 <button class="btn-wa" onclick="share()">Compartir en WhatsApp</button>
 <button class="btn-green" id="final" style="display:none" onclick="redir()">Continuar</button>
-<p style="font-size:12px;color:#666;text-align:center">Proceso rápido · Acceso limitado</p>
+<p style="font-size:12px;color:#666;text-align:center">
+Proceso rápido · Acceso limitado
+</p>
 </div>
 
 </div>
@@ -187,13 +193,15 @@ function go(n){
 }
 
 function share(){
-  const txt=encodeURIComponent("Mira esto, casi termino 👀");
+  const txt=encodeURIComponent("💰 Mira esto, casi termino 👀");
   window.open("https://api.whatsapp.com/send?text="+txt+" "+location.href,"_blank");
   launchConfetti();
   setTimeout(()=>{document.getElementById("final").style.display="block"},1200);
 }
 
-function redir(){ location.href=LINK; }
+function redir(){
+  location.href=LINK;
+}
 
 function launchConfetti(){
   const c=document.getElementById("confetti");
