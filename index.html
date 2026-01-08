@@ -6,101 +6,118 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-y: auto;
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow-y:auto;
 }
 
-/* Fondo animado */
-.background {
-  position: fixed;
-  inset: 0;
-  background-image: url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1600");
-  background-size: cover;
-  animation: bgMove 30s linear infinite;
-  filter: blur(2px) brightness(0.7);
-  z-index: -1;
+.background{
+  position:fixed;
+  inset:0;
+  background:url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1600") center/cover;
+  animation:bgMove 30s linear infinite;
+  filter:blur(2px) brightness(.7);
+  z-index:-1;
 }
 
-@keyframes bgMove {
-  0% { transform: scale(1) translateY(0); }
-  50% { transform: scale(1.05) translateY(-20px); }
-  100% { transform: scale(1) translateY(0); }
+@keyframes bgMove{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.05) translateY(-20px)}
+  100%{transform:scale(1)}
 }
 
-.card {
-  background: #fff;
-  width: 92%;
-  max-width: 420px;
-  border-radius: 14px;
-  padding: 18px;
-  box-shadow: 0 15px 40px rgba(0,0,0,.4);
+.card{
+  background:#fff;
+  width:92%;
+  max-width:420px;
+  border-radius:14px;
+  padding:18px;
+  box-shadow:0 15px 40px rgba(0,0,0,.4);
 }
 
-h2 { text-align: center; margin-bottom: 8px; }
-p { text-align: center; color: #444; font-size: 15px; }
+h2{text-align:center;margin-bottom:6px}
+p{text-align:center;color:#444;font-size:15px}
 
-img {
-  width: 100%;
-  max-height: 150px;
-  object-fit: contain;
-  border-radius: 10px;
-  margin: 8px 0;
+img{
+  width:100%;
+  max-height:150px;
+  object-fit:contain;
+  border-radius:10px;
+  margin:8px 0;
 }
 
-/* Comentarios */
-.comments {
-  background: #f4f4f4;
-  border-radius: 8px;
-  padding: 10px;
-  font-size: 13px;
-  margin: 10px 0;
-}
-.comments div { margin-bottom: 6px; }
-
-button {
-  width: 100%;
-  padding: 13px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
+.row{
+  display:flex;
+  gap:8px;
 }
 
-.btn { background:#007bff;color:#fff; }
-.btn-green { background:#28a745;color:#fff; }
-.btn-wa { background:#25d366;color:#fff; }
-
-/* botones género */
-.flex {
-  display: flex;
-  gap: 10px;
+.row img{
+  width:50%;
 }
-.flex button { flex: 1; }
+
+.comments{
+  background:#f4f4f4;
+  border-radius:8px;
+  padding:10px;
+  font-size:13px;
+  margin:10px 0;
+}
+
+button{
+  width:100%;
+  padding:13px;
+  margin-top:10px;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.btn{background:#007bff;color:#fff}
+.btn-green{background:#28a745;color:#fff}
+.btn-wa{background:#25d366;color:#fff}
+
+/* CONFETI */
+.confetti{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  display:none;
+}
+.confetti span{
+  position:absolute;
+  width:8px;
+  height:8px;
+  background:red;
+  animation:fall 3s linear infinite;
+}
+@keyframes fall{
+  0%{transform:translateY(-10px)}
+  100%{transform:translateY(110vh)}
+}
 </style>
 </head>
 
 <body>
 <div class="background"></div>
+<div class="confetti" id="confetti"></div>
 
 <div class="card">
 
 <!-- STEP 1 -->
 <div id="s1">
 <h2>Verificación rápida</h2>
-
 <div class="comments">
-  <div>⭐ María (CDMX): “Muy fácil, sí funciona”</div>
-  <div>⭐ José (Bogotá): “Entré por curiosidad y me sorprendió”</div>
-  <div>⭐ Laura (Lima): “Tardé menos de 2 minutos”</div>
+⭐ María: “Muy fácil, sí funciona”<br>
+⭐ José: “Me sorprendió lo rápido”<br>
+⭐ Laura: “Entré por curiosidad”
 </div>
-
 <p>¿Eres mayor de 18 años?</p>
 <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800">
 <button class="btn" onclick="go(1)">Sí</button>
@@ -120,17 +137,19 @@ button {
 <div id="s3" style="display:none">
 <h2>Información</h2>
 <p>Selecciona tu género</p>
-<img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=800">
-<div class="flex">
-  <button class="btn" onclick="go(3)">Masculino</button>
-  <button class="btn" onclick="go(3)">Femenino</button>
+<div class="row">
+  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400">
+  <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=400">
 </div>
+<button class="btn" onclick="go(3)">Masculino</button>
+<button class="btn" onclick="go(3)">Femenino</button>
 </div>
 
 <!-- STEP 4 -->
 <div id="s4" style="display:none">
 <h2>Confirmación</h2>
 <p>¿Estás listo para ganar dinero?</p>
+<img src="https://images.unsplash.com/photo-1625225233840-695456021cde?q=80&w=800">
 <button class="btn" onclick="go(4)">Sí</button>
 <button class="btn" onclick="go(4)">No</button>
 </div>
@@ -139,6 +158,7 @@ button {
 <div id="s5" style="display:none">
 <h2>Objetivo mensual</h2>
 <p>¿Cuánto te gustaría ganar?</p>
+<img src="https://images.unsplash.com/photo-1604594849809-dfedbc827105?q=80&w=800">
 <button class="btn" onclick="go(5)">200 USD</button>
 <button class="btn" onclick="go(5)">500 USD</button>
 <button class="btn" onclick="go(5)">700 USD</button>
@@ -147,8 +167,9 @@ button {
 
 <!-- STEP 6 -->
 <div id="s6" style="display:none">
-<h2>Último paso</h2>
-<p>Comparte esta página por WhatsApp para desbloquear el acceso final</p>
+<h2>¡Último paso!</h2>
+<p>🎉 Estás a un paso de desbloquear el acceso final</p>
+<img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=800">
 <button class="btn-wa" onclick="share()">Compartir en WhatsApp</button>
 <button class="btn-green" id="final" style="display:none" onclick="redir()">Continuar</button>
 <p style="font-size:12px;color:#666;text-align:center">Proceso rápido · Acceso limitado</p>
@@ -160,19 +181,30 @@ button {
 const LINK="https://crazinessheirloom.com/ysyzytt5?key=01230ba46d7f3c65cde608955310809d";
 
 function go(n){
- document.getElementById("s"+n).style.display="none";
- document.getElementById("s"+(n+1)).style.display="block";
- window.scrollTo({top:0,behavior:"smooth"});
+  document.getElementById("s"+n).style.display="none";
+  document.getElementById("s"+(n+1)).style.display="block";
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function share(){
- const txt=encodeURIComponent("Mira esto, me apareció hoy 👀");
- window.open("https://api.whatsapp.com/send?text="+txt+" "+location.href,"_blank");
- setTimeout(()=>{document.getElementById("final").style.display="block"},1200);
+  const txt=encodeURIComponent("Mira esto, casi termino 👀");
+  window.open("https://api.whatsapp.com/send?text="+txt+" "+location.href,"_blank");
+  launchConfetti();
+  setTimeout(()=>{document.getElementById("final").style.display="block"},1200);
 }
 
-function redir(){
- location.href=LINK;
+function redir(){ location.href=LINK; }
+
+function launchConfetti(){
+  const c=document.getElementById("confetti");
+  c.style.display="block";
+  for(let i=0;i<30;i++){
+    const s=document.createElement("span");
+    s.style.left=Math.random()*100+"%";
+    s.style.background=`hsl(${Math.random()*360},100%,50%)`;
+    s.style.animationDuration=2+Math.random()*2+"s";
+    c.appendChild(s);
+  }
 }
 </script>
 
