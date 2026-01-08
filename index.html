@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Verificación rápida</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.background {
+  position: fixed;
+  inset: 0;
+  background-image: url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1600");
+  background-size: cover;
+  animation: bgMove 30s linear infinite;
+  filter: blur(2px) brightness(0.7);
+  z-index: -1;
+}
+
+@keyframes bgMove {
+  0% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.05) translateY(-25px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+.card {
+  background: #fff;
+  width: 92%;
+  max-width: 420px;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.4);
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  color: #444;
+}
+
+img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn { background:#007bff;color:#fff; }
+.btn-green { background:#28a745;color:#fff; }
+.btn-wa { background:#25d366;color:#fff; }
+
+.comments {
+  background:#f1f1f1;
+  padding:10px;
+  border-radius:8px;
+  font-size:13px;
+  margin-bottom:10px;
+}
+</style>
+</head>
+
+<body>
+<div class="background"></div>
+
+<div class="card">
+
+<!-- COMENTARIOS -->
+<div class="comments">
+⭐ María: “Me funcionó, no lo creía”<br>
+⭐ José: “Tardé 2 minutos, recomendado”<br>
+⭐ Laura: “Muy fácil, gracias”
+</div>
+
+<!-- STEP 1 -->
+<div id="s1">
+<h2>Verificación rápida</h2>
+<p>¿Eres mayor de 18 años?</p>
+<img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800">
+<button class="btn" onclick="go(1)">Sí</button>
+<button class="btn" onclick="go(1)">No</button>
+</div>
+
+<!-- STEP 2 -->
+<div id="s2" style="display:none">
+<h2>Confirmación</h2>
+<p>¿Estás usando un dispositivo móvil?</p>
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=800">
+<button class="btn" onclick="go(2)">Sí</button>
+<button class="btn" onclick="go(2)">No</button>
+</div>
+
+<!-- STEP 3 -->
+<div id="s3" style="display:none">
+<h2>Información</h2>
+<p>Selecciona tu género</p>
+<img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=800">
+<button class="btn" onclick="go(3)">Masculino</button>
+<button class="btn" onclick="go(3)">Femenino</button>
+</div>
+
+<!-- STEP 4 -->
+<div id="s4" style="display:none">
+<h2>Confirmación</h2>
+<p>¿Estás listo para ganar dinero?</p>
+<button class="btn" onclick="go(4)">Sí</button>
+<button class="btn" onclick="go(4)">No</button>
+</div>
+
+<!-- STEP 5 -->
+<div id="s5" style="display:none">
+<h2>Objetivo mensual</h2>
+<p>¿Cuánto te gustaría ganar?</p>
+<button class="btn" onclick="go(5)">200 USD</button>
+<button class="btn" onclick="go(5)">500 USD</button>
+<button class="btn" onclick="go(5)">700 USD</button>
+<button class="btn" onclick="go(5)">1000 USD</button>
+</div>
+
+<!-- STEP 6 -->
+<div id="s6" style="display:none">
+<h2>Último paso</h2>
+<p>Comparte esta página por WhatsApp para desbloquear el acceso final</p>
+<button class="btn-wa" onclick="share()">Compartir en WhatsApp</button>
+<button class="btn-green" id="final" style="display:none" onclick="redir()">Continuar</button>
+<p style="font-size:12px;color:#666">Proceso rápido · Acceso limitado</p>
+</div>
+
+</div>
+
+<script>
+const LINK="https://crazinessheirloom.com/ysyzytt5?key=01230ba46d7f3c65cde608955310809d";
+
+function go(n){
+ document.getElementById("s"+n).style.display="none";
+ document.getElementById("s"+(n+1)).style.display="block";
+}
+
+function share(){
+ const txt=encodeURIComponent("Mira esto, me apareció hoy 👀");
+ window.open("https://api.whatsapp.com/send?text="+txt+" "+location.href,"_blank");
+ setTimeout(()=>{document.getElementById("final").style.display="block"},1200);
+}
+
+function redir(){
+ location.href=LINK;
+}
+</script>
+
+</body>
+</html>
